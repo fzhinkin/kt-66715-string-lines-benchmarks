@@ -74,6 +74,7 @@ private class LinesIterator(private val string: CharSequence) : Iterator<String>
             state = 1
             var idx = tokenStartIndex
             delimiterLength = -1
+            delimiterStartIndex = string.length
             while (idx < string.length) {
                 val c = string[idx]
                 if (c == '\n' || c == '\r') {
@@ -82,11 +83,12 @@ private class LinesIterator(private val string: CharSequence) : Iterator<String>
                     } else {
                         1
                     }
+                    delimiterStartIndex = idx
                     break
                 }
                 idx++
             }
-            delimiterStartIndex = idx
+
             return true
         }
         return state == 1
