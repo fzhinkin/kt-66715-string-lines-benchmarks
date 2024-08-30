@@ -51,6 +51,8 @@ benchmark {
     configurations {
         named("main") {
             advanced("jvmForks", 3)
+            iterationTime = 1
+            iterationTimeUnit = "sec"
         }
     }
 }
